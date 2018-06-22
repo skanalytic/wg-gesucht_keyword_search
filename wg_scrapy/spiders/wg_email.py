@@ -4,6 +4,15 @@ import smtplib
 
 pd.set_option('display.max_colwidth', -1)
 
+import json
+
+
+with open('../../config/wg_config.json', 'r') as f:
+    config_info = json.load(f)
+
+mypassword = config_info['email_password']
+from_email = config_info['from_email']
+to_email = config_info['to_email']
 
 #inputs
 keywords = ['cosy']
@@ -26,14 +35,14 @@ for index, text in enumerate(df['title'] + ' ' + df['description']):
             # if not send email
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.starttls()
-            server.login("samuel.king@alumni.ie.edu", "***")
+            server.login(from_email, mypassword)
 
             SUBJECT = "New flat with *** {} *** keyword match!".format(word)
             TEXT = text_out
 
             msg = 'Subject: {}\n\n{}'.format(SUBJECT, TEXT)
             print(msg)
-            server.sendmail("samuel.king@alumni.ie.edu", "samuel.d.t.king@hotmail.co.uk", msg)
+            server.sendmail(from_email, to_email, msg)
             server.quit()
 
             #make record of email
