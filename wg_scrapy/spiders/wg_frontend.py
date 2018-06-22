@@ -55,11 +55,11 @@ to_date = convert_date_to_ten_digit_code(to_date_input)
 # CALL URL
 
 generic_url = "https://www.wg-gesucht.de/wohnungen-in-Berlin.8.2.1.0.html?offer_filter=1&noDeact=1&city_id=8&category={}&rent_type=0&dFr={}&dTo={}"
+
 full_url = generic_url.format(category,from_date,to_date)
 print(full_url)
 
 # RETREIVE DATA
-
 
 # PARSE DATA
 

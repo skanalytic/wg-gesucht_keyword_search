@@ -12,7 +12,7 @@ from scrapy.http import HtmlResponse
 
 time = datetime.datetime.now()
 start_url = ['https://www.wg-gesucht.de/wohnungen-in-Berlin.8.2.1.0.html?offer_filter=1&noDeact=1&city_id=8&category=2&rent_type=0&dFr=1531605600&dTo=1531605600']
-output_json = 'result.json'
+output_json = 'wg_results.json'
 
 # delete json
 def delete_file(filename):
