@@ -1,5 +1,5 @@
 # ignore a single file
-#/wg_scrapy/spiders/wg_sent_list.csv
+/wg_scrapy/spiders/wg_sent_list.csv
 
 # ignore an entire directory
 /config/
