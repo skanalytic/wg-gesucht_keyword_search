@@ -2,12 +2,14 @@
 import pandas as pd
 import smtplib
 import datetime
-
-pd.set_option('display.max_colwidth', -1)
-
 import json
 import os
 
+pd.set_option('display.max_colwidth', -1)
+
+#inputs
+keywords = ['helle']
+output_json = 'wg_results.json'
 
 with open('../../config/wg_config.json', 'r') as f:
     config_info = json.load(f)
@@ -16,11 +18,8 @@ mypassword = config_info['email_password']
 from_email = config_info['from_email']
 to_email = config_info['to_email']
 
-#inputs
-keywords = ['helle']
-
 # load files
-df = pd.read_json('wg_results.json')
+df = pd.read_json(output_json)
 
 # check if already sent
 dir_path = 'wg_sent_list.csv'
