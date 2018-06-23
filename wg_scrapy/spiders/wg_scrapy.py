@@ -8,16 +8,16 @@ import re
 numbers = re.compile('\d+(?:\.\d+)?')
 
 # INPUTS
-category_input = str(2)
-from_date_input = '15-07-2018'
-to_date_input = '22-10-2018'
+#category_input = str(2)
+#from_date_input = '15-07-2018'
+#to_date_input = '22-10-2018'
 output_json = 'wg_results.json'
 
 # FUNCTIONS
 
 def convert_date_to_ten_digit_code(date):
     import time
-    tm = time.strptime(from_date_input, '%d-%m-%Y')
+    tm = time.strptime(date, '%d-%m-%Y')
     time = time.mktime(tm)
     time_int = int(time)
     time_str = str(time_int)
@@ -25,15 +25,14 @@ def convert_date_to_ten_digit_code(date):
 
 # CONVERT INPUTS
 
-category = str(category_input)
-from_date = convert_date_to_ten_digit_code(from_date_input)
-to_date = convert_date_to_ten_digit_code(to_date_input)
+# category = str(category_input)
+# from_date = convert_date_to_ten_digit_code(from_date_input)
+# to_date = convert_date_to_ten_digit_code(to_date_input)
 
 # CALL URL
 
-generic_url = "https://www.wg-gesucht.de/wohnungen-in-Berlin.8.2.1.0.html?offer_filter=1&noDeact=1&city_id=8&category={}&rent_type=0&dFr={}&dTo={}"
-full_url = generic_url.format(category,from_date,to_date)
-
+generic_url = "https://www.wg-gesucht.de/wohnungen-in-Berlin.8.2.1.0.html?offer_filter=1&noDeact=1&city_id=8&category=2&rent_type=0&dFr=1531605600"
+#full_url = generic_url.format(category,from_date,to_date)
 start_url = [generic_url]
 
 # delete json

@@ -4,11 +4,14 @@ import smtplib
 import datetime
 import json
 import os
+from googletrans import Translator
+translator = Translator()
 
 pd.set_option('display.max_colwidth', -1)
 
 #inputs
-keywords = ['helle']
+keywords = ['Kreuzberg'] #,'Görlitzer Park', 'Neukölln','Dachboden','Attic','Dachgeschosswohnung'
+
 output_json = 'wg_results.json'
 
 with open('../../config/wg_config.json', 'r') as f:
@@ -46,7 +49,8 @@ for index, text in enumerate(df['title'] + ' ' + df['description']):
             server.login(from_email, mypassword)
 
             SUBJECT = "New flat with *** {} *** keyword match!".format(word)
-            TEXT = text_out
+            TEXT = translator.translate(text_out, src='de',dest='en')
+
 
             msg = 'Subject: {}\n\n{}'.format(SUBJECT, TEXT)
             print(msg)
